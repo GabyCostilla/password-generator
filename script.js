@@ -19,13 +19,23 @@ function generatePassword() {
 
     let password = '';
 
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        password += chars.charAt(randomIndex);
+    if (passwordCount === 5 || passwordCount === 28) {
+        password = "ZAIBY CANON <3";
+    } else {
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            password += chars.charAt(randomIndex);
+        }
     }
 
     document.getElementById('password').textContent = password;
 }
 
-document.getElementById('generate').addEventListener('click', generatePassword);
+let passwordCount = 0;
+
+document.getElementById('generate').addEventListener('click', function () {
+    generatePassword();
+    passwordCount++;
+});
+
 generatePassword(); // Genera una contraseña inicial al cargar la página
